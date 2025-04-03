@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Shopping Cart | EliteKits</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .cart-item:hover {
+            background-color: #f9fafb;
+        }
+        .quantity-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        .discount-applied {
+            animation: pulse 1.5s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50">
+    <!-- Navigation (Same as index.html) -->
+    <nav class="bg-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex-shrink-0 flex items-center">
+                        <img class="h-8 w-auto" src="https://cdn.pexels.com/photo/soccer-ball-1265875.jpeg" alt="Logo">
+                        <span class="ml-2 text-xl font-bold text-primary">EliteKits</span>
+                    </a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-gray-900 hover:text-primary px-3 py-2 text-sm font-medium">Home</a>
+                    <a href="products.html" class="text-primary px-3 py-2 text-sm font-medium">Shop</a>
+                    <a href="#" class="text-gray-900 hover:text-primary px-3 py-2 text-sm font-medium">Teams</a>
+                    <a href="#" class="text-gray-900 hover:text-primary px-3 py-2 text-sm font-medium">New Arrivals</a>
+                    <div class="relative">
+                        <button class="text-primary">
+                            <i class="fas fa-shopping-cart text-xl"></i>
+                            <span class="absolute -top-2 -right-2 bg-secondary text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">2</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Cart Section -->
+    <section class="py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h1 class="text-3xl font-bold text-gray-900 mb-8">Your Cart</h1>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Cart Items -->
+                <div class="lg:col-span-2">
+                    <div class="bg-white shadow rounded-lg overflow-hidden">
+                        <!-- Cart Header -->
+                        <div class="hidden md:grid grid-cols-12 bg-gray-50 px-6 py-3 text-sm font-medium text-gray-500 uppercase tracking-wider">
+                            <div class="col-span-5">Product</div>
+                            <div class="col-span-2 text-center">Price</div>
+                            <div class="col-span-3 text-center">Quantity</div>
+                            <div class="col-span-2 text-right">Total</div>
+                        </div>
+                        
+                        <!-- Cart Items -->
+                        <div class="divide-y divide-gray-200">
+                            <!-- Cart Item 1 -->
+                            <div class="cart-item grid grid-cols-1 md:grid-cols-12 px-4 md:px-6 py-4">
+                                <div class="col-span-5 flex items-center">
+                                    <button class="text-gray-400 hover:text-red-500 mr-4">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                    <img src="https://cdn.pexels.com/photo/soccer-jersey-3495075/" alt="Manchester United Home Jersey" class="w-20 h-20 object-contain">
+                                    <div class="ml-4">
+                                        <h3 class="text-sm font-medium text-gray-900">Manchester United 23/24 Home</h3>
+                                        <p class="text-sm text-gray-500">Size: M</p>
+                                    </div>
+                                </div>
+                                <div class="col-span-2 flex md:block items-center mt-2 md:mt-0">
+                                    <span class="md:hidden text-sm font-medium text-gray-500 mr-2">Price:</span>
+                                    <span class="text-gray-900">$89.99</span>
+                                </div>
+                                <div class="col-span-3 flex items-center mt-2 md:mt-0">
+                                    <span class="md:hidden text-sm font-medium text-gray-500 mr-2">Quantity:</span>
+                                    <div class="flex items-center border border-gray-300 rounded">
+                                        <button class="quantity-btn px-2 py-1 text-gray-600 hover:bg-gray-100" disabled>
+                                            <i class="fas fa-minus text-xs"></i>
+                                        </button>
+                                        <span class="px-3 py-1 text-sm">1</span>
+                                        <button class="quantity-btn px-2 py-1 text-gray-600 hover:bg-gray-100">
+                                            <i class="fas fa-plus text-xs"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="col-span-2 flex md:justify-end items-center mt-2 md:mt-0">
+                                    <span class="md:hidden text-sm font-medium text-gray-500 mr-2">Total:</span>
+                                    <span class="text-gray-900 font-medium">$89.99</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Cart Item 2 -->
+                            <div class="cart-item grid grid-cols-1 md:grid-cols-12 px-4 md:px-6 py-4">
+                                <div class="col-span-5 flex items-center">
+                                    <button class="text-gray-400 hover:text-red-500 mr-4">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                    <img src="https://cdn.pexels.com/photo/soccer-jersey-3495076/" alt="Barcelona Home Jersey" class="w-20 h-20 object-contain">
+                                    <div class="ml-4">
+                                        <h3 class="text-sm font-medium text-gray-900">Barcelona 23/24 Home</h3>
+                                        <p class="text-sm text-gray-500">Size: L</p>
+                                    </div>
+                                </div>
+                                <div class="col-span-2 flex md:block items-center mt-2 md:mt-0">
+                                    <span class="md:hidden text-sm font-medium text-gray-500 mr-2">Price:</span>
+                                    <span class="text-gray-900">$94.99</span>
+                                </div>
+                                <div class="col-span-3 flex items-center mt-2 md:mt-0">
+                                    <span class="md:hidden text-sm font-medium text-gray-500 mr-2">Quantity:</span>
+                                    <div class="flex items-center border border-gray-300 rounded">
+                                        <button class="quantity-btn px-2 py-1 text-gray-600 hover:bg-gray-100">
+                                            <i class="fas fa-minus text-xs"></i>
+                                        </button>
+                                        <span class="px-3 py-1 text-sm">2</span>
+                                        <button class="quantity-btn px-2 py-1 text-gray-600 hover:bg-gray-100">
+                                            <i class="fas fa-plus text-xs"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="col-span-2 flex md:justify-end items-center mt-2 md:mt-0">
+                                    <span class="md:hidden text-sm font-medium text-gray-500 mr-2">Total:</span>
+                                    <span class="text-gray-900 font-medium">$189.98</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Coupon Code -->
+                    <div class="mt-6 bg-white shadow rounded-lg p-6">
+                        <h3 class="text-lg font-medium text-gray-900 mb-2">Have a coupon code?</h3>
+                        <div class="flex">
+                            <input type="text" placeholder="Enter coupon code" class="flex-grow px-4 py-2 border border-gray-300 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary">
+                            <button class="bg-primary hover:bg-blue-700 text-white px-6 py-2 rounded-r-lg font-medium transition duration-300">
+                                Apply
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Continue Shopping -->
+                    <div class="mt-6">
+                        <a href="products.html" class="inline-flex items-center text-primary hover:text-blue-700">
+                            <i class="fas fa-arrow-left mr-2"></i> Continue Shopping
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Order Summary -->
+                <div>
+                    <div class="bg-white shadow rounded-lg p-6 sticky top-4">
+                        <h3 class="text-lg font-medium text-gray-900 mb-4">Order Summary</h3>
+                        <div class="space-y-3">
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Subtotal</span>
+                                <span class="text-gray-900">$279.97</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Shipping</span>
+                                <span class="text-gray-900">Free</span>
+                            </div>
+                            <div class="flex justify-between discount-applied">
+                                <span class="text-gray-600">Discount</span>
+                                <span class="text-green-600">-$28.00</span>
+                            </div>
+                            <div class="border-t border-gray-200 pt-3 mt-3">
+                                <div class="flex justify-between">
+                                    <span class="font-medium text-gray-900">Total</span>
+                                    <span class="font-bold text-lg text-primary">$251.97</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Checkout Button -->
+                        <a href="checkout.html" class="mt-6 block w-full bg-primary hover:bg-blue-700 text-white text-center py-3 px-4 rounded-lg font-medium transition duration-300">
+                            Proceed to Checkout
+                        </a>
+                        
+                        <!-- Payment Methods -->
+                        <div class="mt-6">
+                            <h4 class="text-xs font-medium text-gray-500 uppercase tracking-wider mb-2">We Accept</h4>
+                            <div class="flex space-x-4">
+                                <img src="https://cdn.pexels.com/photo/71545/" alt="Visa" class="h-8">
+                                <img src="https://cdn.pexels.com/photo/71546/" alt="Mastercard" class="h-8">
+                                <img src="https://cdn.pexels.com/photo/71547/" alt="American Express" class="h-8">
+                                <img src="https://cdn.pexels.com/photo/71548/" alt="PayPal" class="h-8">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (Same as index.html) -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-lg font-bold mb-4">EliteKits</h3>
+                    <p class="text-gray-400">The ultimate destination for authentic football jerseys and merchandise.</p>
+                </div>
+                <div>
+                    <h4 class="text-sm font-semibold uppercase tracking-wider mb-4">Shop</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">New Arrivals</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Jerseys</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Shorts</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Accessories</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-sm font-semibold uppercase tracking-wider mb-4">Help</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Contact Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Shipping</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Returns</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Size Guide</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-sm font-semibold uppercase tracking-wider mb-4">Connect</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-tiktok text-xl"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-sm text-gray-400 text-center">
+                <p>© 2023 EliteKits. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Quantity controls
+        const quantityBtns = document.querySelectorAll('.quantity-btn');
+        quantityBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const parent = e.currentTarget.parentElement;
+                const quantityDisplay = parent.querySelector('span');
+                let quantity = parseInt(quantityDisplay.textContent);
+                
+                if (e.currentTarget.querySelector('.fa-minus')) {
+                    if (quantity > 1) {
+                        quantityDisplay.textContent = quantity - 1;
+                        if (quantity - 1 === 1) {
+                            e.currentTarget.disabled = true;
+                        }
+                    }
+                } else {
+                    quantityDisplay.textContent = quantity + 1;
+                    // Enable minus button if it was disabled
+                    const minusBtn = parent.querySelector('.fa-minus').parentElement;
+                    minusBtn.disabled = false;
+                }
+                
+                // Update cart totals (this would be more complex in a real app)
+                updateCartTotals();
+            });
+        });
+
+        // Remove item functionality
+        const removeBtns = document.querySelectorAll('.cart-item button');
+        removeBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.currentTarget.closest('.cart-item').remove();
+                updateCartTotals();
+            });
+        });
+
+        // Coupon code application
+        const couponBtn = document.querySelector('.bg-primary');
+        couponBtn.addEventListener('click', () => {
+            const couponInput = document.querySelector('input[type="text"]');
+            if (couponInput.value.trim() !== '') {
+                // In a real app, this would validate with a backend
+                document.querySelector('.discount-applied').style.display = 'flex';
+                updateCartTotals();
+            }
+        });
+
+        // Function to update cart totals (simplified for demo)
+        function updateCartTotals() {
+            // In a real app, this would calculate based on all items
+            console.log('Updating cart totals...');
+        }
+    </script>
+</body>
+</html>
