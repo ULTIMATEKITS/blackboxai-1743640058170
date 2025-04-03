@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout | EliteKits</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .checkout-step.active {
+            border-color: #0077B5;
+            background-color: #f0f7ff;
+        }
+        .checkout-step.completed {
+            border-color: #10B981;
+        }
+        .payment-method.selected {
+            border-color: #0077B5;
+            background-color: #f0f7ff;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50">
+    <!-- Navigation (Same as index.html) -->
+    <nav class="bg-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex-shrink-0 flex items-center">
+                        <img class="h-8 w-auto" src="https://cdn.pexels.com/photo/soccer-ball-1265875.jpeg" alt="Logo">
+                        <span class="ml-2 text-xl font-bold text-primary">EliteKits</span>
+                    </a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-gray-900 hover:text-primary px-3 py-2 text-sm font-medium">Home</a>
+                    <a href="products.html" class="text-primary px-3 py-2 text-sm font-medium">Shop</a>
+                    <a href="#" class="text-gray-900 hover:text-primary px-3 py-2 text-sm font-medium">Teams</a>
+                    <a href="#" class="text-gray-900 hover:text-primary px-3 py-2 text-sm font-medium">New Arrivals</a>
+                    <div class="relative">
+                        <button class="text-gray-900 hover:text-primary">
+                            <i class="fas fa-shopping-cart text-xl"></i>
+                            <span class="absolute -top-2 -right-2 bg-secondary text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">2</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Checkout Section -->
+    <section class="py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Checkout Progress -->
+            <div class="flex justify-between mb-12">
+                <div class="checkout-step active w-1/3 py-3 border-b-2 border-primary text-center font-medium text-primary">
+                    <div class="flex flex-col items-center">
+                        <div class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center mb-1">1</div>
+                        <span>Shipping</span>
+                    </div>
+                </div>
+                <div class="checkout-step w-1/3 py-3 border-b-2 border-gray-200 text-center font-medium text-gray-500">
+                    <div class="flex flex-col items-center">
+                        <div class="w-8 h-8 rounded-full bg-gray-200 text-gray-600 flex items-center justify-center mb-1">2</div>
+                        <span>Payment</span>
+                    </div>
+                </div>
+                <div class="checkout-step w-1/3 py-3 border-b-2 border-gray-200 text-center font-medium text-gray-500">
+                    <div class="flex flex-col items-center">
+                        <div class="w-8 h-8 rounded-full bg-gray-200 text-gray-600 flex items-center justify-center mb-1">3</div>
+                        <span>Review</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Checkout Form -->
+                <div class="lg:col-span-2">
+                    <div id="shipping-tab" class="tab-content active">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-6">Shipping Information</h2>
+                        
+                        <form id="shipping-form">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="first-name" class="block text-sm font-medium text-gray-700 mb-1">First Name</label>
+                                    <input type="text" id="first-name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary" required>
+                                </div>
+                                <div>
+                                    <label for="last-name" class="block text-sm font-medium text-gray-700 mb-1">Last Name</label>
+                                    <input type="text" id="last-name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary" required>
+                                </div>
+                                <div class="md:col-span-2">
+                                    <label for="address" class="block text-sm font-medium text-gray-700 mb-1">Address</label>
+                                    <input type="text" id="address" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary" required>
+                                </div>
+                                <div>
+                                    <label for="city" class="block text-sm font-medium text-gray-700 mb-1">City</label>
+                                    <input type="text" id="city" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary" required>
+                                </div>
+                                <div>
+                                    <label for="country" class="block text-sm font-medium text-gray-700 mb-1">Country</label>
+                                    <select id="country" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary" required>
+                                        <option value="">Select Country</option>
+                                        <option value="US">United States</option>
+                                        <option value="UK">United Kingdom</option>
+                                        <option value="CA">Canada</option>
+                                        <option value="AU">Australia</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="state" class="block text-sm font-medium text-gray-700 mb-1">State/Province</label>
+                                    <input type="text" id="state" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary" required>
+                                </div>
+                                <div>
+                                    <label for="zip" class="block text-sm font-medium text-gray-700 mb-1">ZIP/Postal Code</label>
+                                    <input type="text" id="zip" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary" required>
+                                </div>
+                                <div class="md:col-span-2">
+                                    <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
+                                    <input type="tel" id="phone" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary" required>
+                                </div>
+                                <div class="md:col-span-2">
+                                    <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+                                    <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary" required>
+                                </div>
+                                <div class="md:col-span-2">
+                                    <div class="flex items-center">
+                                        <input id="save-address" type="checkbox" class="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded">
+                                        <label for="save-address" class="ml-2 block text-sm text-gray-700">Save this information for next time</label>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-8 flex justify-between">
+                                <a href="cart.html" class="text-primary hover:text-blue-700 font-medium flex items-center">
+                                    <i class="fas fa-arrow-left mr-2"></i> Return to Cart
+                                </a>
+                                <button type="button" onclick="nextStep('payment')" class="bg-primary hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition duration-300">
+                                    Continue to Payment
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div id="payment-tab" class="tab-content">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-6">Payment Method</h2>
+                        
+                        <div class="space-y-4 mb-6">
+                            <div class="payment-method selected p-4 border-2 border-primary rounded-lg bg-white shadow-sm cursor-pointer">
+                                <div class="flex items-center">
+                                    <div class="flex-shrink-0 h-5 w-5 rounded-full border-2 border-primary bg-primary flex items-center justify-center mr-3">
+                                        <i class="fas fa-check text-white text-xs"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-lg font-medium text-gray-900">Credit Card</h3>
+                                        <p class="text-sm text-gray-500">Pay with Visa, Mastercard, American Express</p>
+                                    </div>
+                                    <div class="ml-auto flex space-x-2">
+                                        <img src="https://cdn.pexels.com/photo/71545/" alt="Visa" class="h-6">
+                                        <img src="https://cdn.pexels.com/photo/71546/" alt="Mastercard" class="h-6">
+                                        <img src="https://cdn.pexels.com/photo/71547/" alt="Amex" class="h-6">
+                                    </div>
+                                </div>
+                                
+                                <div class="mt-4 pl-8">
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <div>
+                                            <label for="card-number" class="block text-sm font-medium text-gray-700 mb-1">Card Number</label>
+                                            <input type="text" id="card-number" placeholder="1234 5678 9012 3456" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary">
+                                        </div>
+                                        <div>
+                                            <label for="card-name" class="block text-sm font-medium text-gray-700 mb-1">Name on Card</label>
+                                            <input type="text" id="card-name" placeholder="John Smith" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary">
+                                        </div>
+                                        <div>
+                                            <label for="card-expiry" class="block text-sm font-medium text-gray-700 mb-1">Expiry Date</label>
+                                            <input type="text" id="card-expiry" placeholder="MM/YY" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary">
+                                        </div>
+                                        <div>
+                                            <label for="card-cvv" class="block text-sm font-medium text-gray-700 mb-1">CVV</label>
+                                            <input type="text" id="card-cvv" placeholder="123" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="payment-method p-4 border-2 border-gray-200 rounded-lg bg-white shadow-sm cursor-pointer">
+                                <div class="flex items-center">
+                                    <div class="flex-shrink-0 h-5 w-5 rounded-full border-2 border-gray-300 bg-white mr-3"></div>
+                                    <div>
+                                        <h3 class="text-lg font-medium text-gray-900">PayPal</h3>
+                                        <p class="text-sm text-gray-500">Pay with your PayPal account</p>
+                                    </div>
+                                    <div class="ml-auto">
+                                        <img src="https://cdn.pexels.com/photo/71548/" alt="PayPal" class="h-6">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex justify-between">
+                            <button type="button" onclick="prevStep('shipping')" class="text-primary hover:text-blue-700 font-medium flex items-center">
+                                <i class="fas fa-arrow-left mr-2"></i> Back to Shipping
+                            </button>
+                            <button type="button" onclick="nextStep('review')" class="bg-primary hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition duration-300">
+                                Review Order
+                            </button>
+                        </div>
+                    </div>
+
+                    <div id="review-tab" class="tab-content">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-6">Review Your Order</h2>
+                        
+                        <div class="bg-white shadow rounded-lg overflow-hidden mb-6">
+                            <div class="p-6 border-b border-gray-200">
+                                <h3 class="text-lg font-medium text-gray-900 mb-2">Shipping Information</h3>
+                                <div id="shipping-review" class="text-gray-700">
+                                    <!-- Dynamically filled from shipping form -->
+                                </div>
+                                <button onclick="prevStep('payment')" class="mt-3 text-sm text-primary hover:text-blue-700">Edit</button>
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-lg font-medium text-gray-900 mb-2">Payment Method</h3>
+                                <div id="payment-review" class="text-gray-700">
+                                    <!-- Dynamically filled from payment selection -->
+                                </div>
+                                <button onclick="prevStep('payment')" class="mt-3 text-sm text-primary hover:text-blue-700">Edit</button>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white shadow rounded-lg overflow-hidden mb-6">
+                            <div class="p-6">
+                                <h3 class="text-lg font-medium text-gray-900 mb-4">Order Summary</h3>
+                                <div class="space-y-4">
+                                    <div class="flex justify-between">
+                                        <span class="text-gray-600">Manchester United 23/24 Home</span>
+                                        <span class="text-gray-900">$89.99</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-gray-600">Barcelona 23/24 Home</span>
+                                        <span class="text-gray-900">$94.99</span>
+                                    </div>
+                                    <div class="flex justify-between border-t border-gray-200 pt-3">
+                                        <span class="text-gray-600">Subtotal</span>
+                                        <span class="text-gray-900">$184.98</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-gray-600">Shipping</span>
+                                        <span class="text-gray-900">Free</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-gray-600">Tax</span>
+                                        <span class="text-gray-900">$14.80</span>
+                                    </div>
+                                    <div class="flex justify-between border-t border-gray-200 pt-3 font-medium">
+                                        <span class="text-gray-900">Total</span>
+                                        <span class="text-lg text-primary">$199.78</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white shadow rounded-lg overflow-hidden mb-6 p-6">
+                            <div class="flex items-start">
+                                <input id="terms" type="checkbox" class="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded mt-1" required>
+                                <label for="terms" class="ml-2 block text-sm text-gray-700">
+                                    I agree to the <a href="#" class="text-primary hover:text-blue-700">Terms of Service</a> and <a href="#" class="text-primary hover:text-blue-700">Privacy Policy</a>. I understand that my order is non-refundable once processed.
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="flex justify-between">
+                            <button type="button" onclick="prevStep('payment')" class="text-primary hover:text-blue-700 font-medium flex items-center">
+                                <i class="fas fa-arrow-left mr-2"></i> Back to Payment
+                            </button>
+                            <button type="button" onclick="placeOrder()" class="bg-primary hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition duration-300">
+                                Place Order
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Order Summary -->
+                <div>
+                    <div class="bg-white shadow rounded-lg p-6 sticky top-4">
+                        <h3 class="text-lg font-medium text-gray-900 mb-4">Order Summary</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center">
+                                <img src="https://cdn.pexels.com/photo/soccer-jersey-3495075/" alt="Manchester United Home Jersey" class="w-16 h-16 object-contain mr-4">
+                                <div>
+                                    <h4 class="text-sm font-medium text-gray-900">Manchester United 23/24 Home</h4>
+                                    <p class="text-xs text-gray-500">Size: M</p>
+                                    <p class="text-sm text-gray-900">$89.99</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <img src="https://cdn.pexels.com/photo/soccer-jersey-3495076/" alt="Barcelona Home Jersey" class="w-16 h-16 object-contain mr-4">
+                                <div>
+                                    <h4 class="text-sm font-medium text-gray-900">Barcelona 23/24 Home</h4>
+                                    <p class="text-xs text-gray-500">Size: L</p>
+                                    <p class="text-sm text-gray-900">$94.99</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="border-t border-gray-200 mt-4 pt-4 space-y-2">
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Subtotal</span>
+                                <span class="text-gray-900">$184.98</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Shipping</span>
+                                <span class="text-gray-900">Free</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Tax</span>
+                                <span class="text-gray-900">$14.80</span>
+                            </div>
+                            <div class="flex justify-between border-t border-gray-200 pt-2 font-medium">
+                                <span class="text-gray-900">Total</span>
+                                <span class="text-lg text-primary">$199.78</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (Same as index.html) -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-lg font-bold mb-4">EliteKits</h3>
+                    <p class="text-gray-400">The ultimate destination for authentic football jerseys and merchandise.</p>
+                </div>
+                <div>
+                    <h4 class="text-sm font-semibold uppercase tracking-wider mb-4">Shop</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">New Arrivals</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Jerseys</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Shorts</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Accessories</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-sm font-semibold uppercase tracking-wider mb-4">Help</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Contact Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Shipping</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Returns</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Size Guide</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-sm font-semibold uppercase tracking-wider mb-4">Connect</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-tiktok text-xl"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-sm text-gray-400 text-center">
+                <p>© 2023 EliteKits. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Checkout steps navigation
+        function nextStep(step) {
+            const currentTab = document.querySelector('.tab-content.active');
+            const nextTab = document.getElementById(`${step}-tab`);
+            
+            if (validateStep(currentTab.id)) {
+                currentTab.classList.remove('active');
+                nextTab.classList.add('active');
+                
+                // Update progress indicators
+                document.querySelectorAll('.checkout-step').forEach(step => {
+                    step.classList.remove('active', 'completed');
+                });
+                
+                if (step === 'payment') {
+                    document.querySelectorAll('.checkout-step')[0].classList.add('completed');
+                    document.querySelectorAll('.checkout-step')[1].classList.add('active');
+                    updateShippingReview();
+                } else if (step === 'review') {
+                    document.querySelectorAll('.checkout-step')[0].classList.add('completed');
+                    document.querySelectorAll('.checkout-step')[1].classList.add('completed');
+                    document.querySelectorAll('.checkout-step')[2].classList.add('active');
+                    updatePaymentReview();
+                }
+            }
+        }
+        
+        function prevStep(step) {
+            const currentTab = document.querySelector('.tab-content.active');
+            const prevTab = document.getElementById(`${step}-tab`);
+            
+            currentTab.classList.remove('active');
+            prevTab.classList.add('active');
+            
+            // Update progress indicators
+            document.querySelectorAll('.checkout-step').forEach(step => {
+                step.classList.remove('active', 'completed');
+            });
+            
+            if (step === 'shipping') {
+                document.querySelectorAll('.checkout-step')[0].classList.add('active');
+            } else if (step === 'payment') {
+                document.querySelectorAll('.checkout-step')[0].classList.add('completed');
+                document.querySelectorAll('.checkout-step')[1].classList.add('active');
+            }
+        }
+        
+        // Form validation
+        function validateStep(step) {
+            if (step === 'shipping-tab') {
+                const form = document.getElementById('shipping-form');
+                if (!form.checkValidity()) {
+                    form.reportValidity();
+                    return false;
+                }
+                return true;
+            }
+            return true;
+        }
+        
+        // Update review sections
+        function updateShippingReview() {
+            const reviewSection = document.getElementById('shipping-review');
+            const formData = {
+                name: `${document.getElementById('first-name').value} ${document.getElementById('last-name').value}`,
+                address: document.getElementById('address').value,
+                city: `${document.getElementById('city').value}, ${document.getElementById('state').value} ${document.getElementById('zip').value}`,
+                country: document.getElementById('country').options[document.getElementById('country').selectedIndex].text,
+                phone: document.getElementById('phone').value,
+                email: document.getElementById('email').value
+            };
+            
+            reviewSection.innerHTML = `
+                <p>${formData.name}</p>
+                <p>${formData.address}</p>
+                <p>${formData.city}</p>
+                <p>${formData.country}</p>
+                <p>${formData.phone}</p>
+                <p>${formData.email}</p>
+            `;
+        }
+        
+        function updatePaymentReview() {
+            const reviewSection = document.getElementById('payment-review');
+            const selectedMethod = document.querySelector('.payment-method.selected h3').textContent;
+            
+            if (selectedMethod === 'Credit Card') {
+                const cardNumber = document.getElementById('card-number').value;
+                reviewSection.innerHTML = `
+                    <p>${selectedMethod}</p>
+                    <p>Card ending in ${cardNumber.slice(-4)}</p>
+                `;
+            } else {
+                reviewSection.innerHTML = `<p>${selectedMethod}</p>`;
+            }
+        }
+        
+        // Payment method selection
+        document.querySelectorAll('.payment-method').forEach(method => {
+            method.addEventListener('click', () => {
+                document.querySelectorAll('.payment-method').forEach(m => {
+                    m.classList.remove('selected');
+                    m.querySelector('.flex-shrink-0').innerHTML = '';
+                    m.querySelector('.flex-shrink-0').classList.remove('bg-primary', 'border-primary');
+                    m.querySelector('.flex-shrink-0').classList.add('border-gray-300', 'bg-white');
+                });
+                
+                method.classList.add('selected');
+                const checkIcon = method.querySelector('.flex-shrink-0');
+                checkIcon.innerHTML = '<i class="fas fa-check text-white text-xs"></i>';
+                checkIcon.classList.remove('border-gray-300', 'bg-white');
+                checkIcon.classList.add('bg-primary', 'border-primary');
+            });
+        });
+        
+        // Place order function
+        function placeOrder() {
+            if (document.getElementById('terms').checked) {
+                // In a real app, this would submit the order to a backend
+                alert('Order placed successfully! Thank you for your purchase.');
+                // Redirect to confirmation page
+                window.location.href = 'index.html';
+            } else {
+                alert('Please agree to the terms and conditions before placing your order.');
+            }
+        }
+    </script>
+</body>
+</html>
