@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Latest Soccer News & Jersey Releases | EliteKits</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        .category-tag {
+            transition: all 0.3s ease;
+        }
+        .category-tag:hover {
+            background-color: #0077B5;
+            color: white;
+        }
+        .article-content img {
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50">
+    <!-- Navigation (Same as index.html) -->
+    <nav class="bg-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex-shrink-0 flex items-center">
+                        <img class="h-8 w-auto" src="https://cdn.pexels.com/photo/soccer-ball-1265875.jpeg" alt="Logo">
+                        <span class="ml-2 text-xl font-bold text-primary">EliteKits</span>
+                    </a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-gray-900 hover:text-primary px-3 py-2 text-sm font-medium">Home</a>
+                    <a href="products.html" class="text-primary px-3 py-2 text-sm font-medium">Shop</a>
+                    <a href="blog.html" class="text-gray-900 hover:text-primary px-3 py-2 text-sm font-medium">Blog</a>
+                    <a href="contact.html" class="text-gray-900 hover:text-primary px-3 py-2 text-sm font-medium">Contact</a>
+                    <div class="relative">
+                        <button class="text-gray-900 hover:text-primary">
+                            <i class="fas fa-shopping-cart text-xl"></i>
+                            <span class="absolute -top-2 -right-2 bg-secondary text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">0</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Blog Header -->
+    <section class="relative py-20 bg-primary text-white">
+        <div class="absolute inset-0 bg-black opacity-50"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">EliteKits Blog</h1>
+            <p class="text-xl max-w-3xl mx-auto">Latest soccer news, jersey releases, and team updates from around the world</p>
+        </div>
+    </section>
+
+    <!-- Blog Content -->
+    <section class="py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Main Content -->
+                <div class="lg:col-span-2">
+                    <!-- Featured Post -->
+                    <div class="bg-white shadow-lg rounded-lg overflow-hidden mb-10">
+                        <img src="https://cdn.pexels.com/photo/soccer-stadium-347139/" alt="Featured Post" class="w-full h-64 md:h-80 object-cover">
+                        <div class="p-6">
+                            <div class="flex items-center mb-3">
+                                <span class="bg-secondary text-white text-xs font-bold px-2 py-1 rounded mr-2">Featured</span>
+                                <span class="text-sm text-gray-500">June 15, 2023</span>
+                            </div>
+                            <h2 class="text-2xl font-bold text-gray-900 mb-3">2023/24 Season Jersey Releases: What's New</h2>
+                            <p class="text-gray-600 mb-4">A comprehensive look at all the new home, away, and third kits being released for the upcoming season from top clubs across Europe.</p>
+                            <a href="#" class="inline-flex items-center text-primary hover:text-blue-700 font-medium">
+                                Read More <i class="fas fa-arrow-right ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Blog Posts Grid -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Blog Post 1 -->
+                        <div class="blog-card bg-white shadow rounded-lg overflow-hidden transition duration-300">
+                            <img src="https://cdn.pexels.com/photo/soccer-jersey-3495075/" alt="Manchester United Jersey" class="w-full h-48 object-cover">
+                            <div class="p-5">
+                                <div class="flex items-center mb-2">
+                                    <span class="category-tag bg-gray-100 text-gray-800 text-xs font-medium px-2 py-1 rounded mr-2">Premier League</span>
+                                    <span class="text-sm text-gray-500">June 10, 2023</span>
+                                </div>
+                                <h3 class="text-xl font-bold text-gray-900 mb-2">Manchester United 23/24 Home Kit Review</h3>
+                                <p class="text-gray-600 mb-3">Our in-depth review of the new Adidas home kit featuring the classic red with black and white accents.</p>
+                                <a href="#" class="text-primary hover:text-blue-700 text-sm font-medium">Read More →</a>
+                            </div>
+                        </div>
+
+                        <!-- Blog Post 2 -->
+                        <div class="blog-card bg-white shadow rounded-lg overflow-hidden transition duration-300">
+                            <img src="https://cdn.pexels.com/photo/soccer-jersey-3495076/" alt="Barcelona Jersey" class="w-full h-48 object-cover">
+                            <div class="p-5">
+                                <div class="flex items-center mb-2">
+                                    <span class="category-tag bg-gray-100 text-gray-800 text-xs font-medium px-2 py-1 rounded mr-2">La Liga</span>
+                                    <span class="text-sm text-gray-500">June 5, 2023</span>
+                                </div>
+                                <h3 class="text-xl font-bold text-gray-900 mb-2">Barcelona's New Away Kit Inspired by Catalan Culture</h3>
+                                <p class="text-gray-600 mb-3">Discover the cultural significance behind Barcelona's striking new away jersey for the 23/24 season.</p>
+                                <a href="#" class="text-primary hover:text-blue-700 text-sm font-medium">Read More →</a>
+                            </div>
+                        </div>
+
+                        <!-- Blog Post 3 -->
+                        <div class="blog-card bg-white shadow rounded-lg overflow-hidden transition duration-300">
+                            <img src="https://cdn.pexels.com/photo/soccer-players-918798/" alt="World Cup" class="w-full h-48 object-cover">
+                            <div class="p-5">
+                                <div class="flex items-center mb-2">
+                                    <span class="category-tag bg-gray-100 text-gray-800 text-xs font-medium px-2 py-1 rounded mr-2">International</span>
+                                    <span class="text-sm text-gray-500">May 28, 2023</span>
+                                </div>
+                                <h3 class="text-xl font-bold text-gray-900 mb-2">2023 Women's World Cup Kits: Ranking All 32 Teams</h3>
+                                <p class="text-gray-600 mb-3">We rank all the national team kits from worst to best for the upcoming Women's World Cup in Australia & New Zealand.</p>
+                                <a href="#" class="text-primary hover:text-blue-700 text-sm font-medium">Read More →</a>
+                            </div>
+                        </div>
+
+                        <!-- Blog Post 4 -->
+                        <div class="blog-card bg-white shadow rounded-lg overflow-hidden transition duration-300">
+                            <img src="https://cdn.pexels.com/photo/soccer-player-977284/" alt="Retro Jersey" class="w-full h-48 object-cover">
+                            <div class="p-5">
+                                <div class="flex items-center mb-2">
+                                    <span class="category-tag bg-gray-100 text-gray-800 text-xs font-medium px-2 py-1 rounded mr-2">Retro</span>
+                                    <span class="text-sm text-gray-500">May 20, 2023</span>
+                                </div>
+                                <h3 class="text-xl font-bold text-gray-900 mb-2">The 10 Greatest Retro Jerseys of All Time</h3>
+                                <p class="text-gray-600 mb-3">A nostalgic look back at the most iconic football jerseys from the 70s, 80s, and 90s that are making a comeback.</p>
+                                <a href="#" class="text-primary hover:text-blue-700 text-sm font-medium">Read More →</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pagination -->
+                    <div class="mt-10 flex justify-center">
+                        <nav class="flex items-center space-x-2">
+                            <button class="px-3 py-1 rounded border border-gray-300 text-gray-500 hover:bg-gray-50">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <button class="px-3 py-1 rounded bg-primary text-white">1</button>
+                            <button class="px-3 py-1 rounded border border-gray-300 hover:bg-gray-50">2</button>
+                            <button class="px-3 py-1 rounded border border-gray-300 hover:bg-gray-50">3</button>
+                            <span class="px-2 text-gray-500">...</span>
+                            <button class="px-3 py-1 rounded border border-gray-300 hover:bg-gray-50">8</button>
+                            <button class="px-3 py-1 rounded border border-gray-300 text-gray-500 hover:bg-gray-50">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </nav>
+                    </div>
+                </div>
+
+                <!-- Sidebar -->
+                <div>
+                    <!-- Categories -->
+                    <div class="bg-white shadow rounded-lg p-6 mb-6">
+                        <h3 class="text-lg font-bold text-gray-900 mb-4">Categories</h3>
+                        <ul class="space-y-2">
+                            <li>
+                                <a href="#" class="flex items-center justify-between text-gray-700 hover:text-primary">
+                                    <span>Premier League</span>
+                                    <span class="bg-gray-100 text-gray-800 text-xs font-medium px-2 py-1 rounded-full">24</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="flex items-center justify-between text-gray-700 hover:text-primary">
+                                    <span>La Liga</span>
+                                    <span class="bg-gray-100 text-gray-800 text-xs font-medium px-2 py-1 rounded-full">18</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="flex items-center justify-between text-gray-700 hover:text-primary">
+                                    <span>Serie A</span>
+                                    <span class="bg-gray-100 text-gray-800 text-xs font-medium px-2 py-1 rounded-full">12</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="flex items-center justify-between text-gray-700 hover:text-primary">
+                                    <span>Bundesliga</span>
+                                    <span class="bg-gray-100 text-gray-800 text-xs font-medium px-2 py-1 rounded-full">9</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="flex items-center justify-between text-gray-700 hover:text-primary">
+                                    <span>International</span>
+                                    <span class="bg-gray-100 text-gray-800 text-xs font-medium px-2 py-1 rounded-full">15</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="flex items-center justify-between text-gray-700 hover:text-primary">
+                                    <span>Retro Jerseys</span>
+                                    <span class="bg-gray-100 text-gray-800 text-xs font-medium px-2 py-1 rounded-full">7</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Popular Posts -->
+                    <div class="bg-white shadow rounded-lg p-6 mb-6">
+                        <h3 class="text-lg font-bold text-gray-900 mb-4">Popular Posts</h3>
+                        <div class="space-y-4">
+                            <a href="#" class="flex group">
+                                <img src="https://cdn.pexels.com/photo/soccer-jersey-3495077/" alt="Popular Post" class="w-16 h-16 object-cover rounded mr-3">
+                                <div>
+                                    <h4 class="font-medium text-gray-900 group-hover:text-primary">The Evolution of Chelsea's Home Kits</h4>
+                                    <p class="text-sm text-gray-500">May 15, 2023</p>
+                                </div>
+                            </a>
+                            <a href="#" class="flex group">
+                                <img src="https://cdn.pexels.com/photo/soccer-jersey-3495078/" alt="Popular Post" class="w-16 h-16 object-cover rounded mr-3">
+                                <div>
+                                    <h4 class="font-medium text-gray-900 group-hover:text-primary">Why Nike's New Template System is Controversial</h4>
+                                    <p class="text-sm text-gray-500">May 8, 2023</p>
+                                </div>
+                            </a>
+                            <a href="#" class="flex group">
+                                <img src="https://cdn.pexels.com/photo/soccer-jersey-3495079/" alt="Popular Post" class="w-16 h-16 object-cover rounded mr-3">
+                                <div>
+                                    <h4 class="font-medium text-gray-900 group-hover:text-primary">Limited Edition Kits Worth Collecting</h4>
+                                    <p class="text-sm text-gray-500">April 30, 2023</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Newsletter -->
+                    <div class="bg-white shadow rounded-lg p-6">
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">Newsletter</h3>
+                        <p class="text-gray-600 text-sm mb-4">Get the latest jersey releases and soccer news straight to your inbox</p>
+                        <form>
+                            <input type="email" placeholder="Your email address" class="w-full px-4 py-2 border border-gray-300 rounded-lg mb-2 focus:ring-primary focus:border-primary">
+                            <button type="submit" class="w-full bg-primary hover:bg-blue-700 text-white py-2 px-4 rounded-lg font-medium transition duration-300">
+                                Subscribe
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (Same as index.html) -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-lg font-bold mb-4">EliteKits</h3>
+                    <p class="text-gray-400">The ultimate destination for authentic football jerseys and merchandise.</p>
+                </div>
+                <div>
+                    <h4 class="text-sm font-semibold uppercase tracking-wider mb-4">Shop</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">New Arrivals</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Jerseys</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Shorts</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Accessories</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-sm font-semibold uppercase tracking-wider mb-4">Help</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Contact Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Shipping</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Returns</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Size Guide</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-sm font-semibold uppercase tracking-wider mb-4">Connect</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-tiktok text-xl"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-sm text-gray-400 text-center">
+                <p>© 2023 EliteKits. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Newsletter form submission
+        document.querySelector('form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            // In a real app, this would submit to a newsletter service
+            alert('Thank you for subscribing to our newsletter!');
+            e.target.reset();
+        });
+    </script>
+</body>
+</html>
