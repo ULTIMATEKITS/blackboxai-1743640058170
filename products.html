@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop Soccer Jerseys | EliteKits</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .filter-option.active {
+            background-color: #0077B5;
+            color: white;
+        }
+        .product-card:hover .quick-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .quick-view {
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50">
+    <!-- Navigation (Same as index.html) -->
+    <nav class="bg-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex-shrink-0 flex items-center">
+                        <img class="h-8 w-auto" src="https://cdn.pexels.com/photo/soccer-ball-1265875.jpeg" alt="Logo">
+                        <span class="ml-2 text-xl font-bold text-primary">EliteKits</span>
+                    </a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-gray-900 hover:text-primary px-3 py-2 text-sm font-medium">Home</a>
+                    <a href="products.html" class="text-primary px-3 py-2 text-sm font-medium">Shop</a>
+                    <a href="#" class="text-gray-900 hover:text-primary px-3 py-2 text-sm font-medium">Teams</a>
+                    <a href="#" class="text-gray-900 hover:text-primary px-3 py-2 text-sm font-medium">New Arrivals</a>
+                    <div class="relative">
+                        <button class="text-gray-900 hover:text-primary">
+                            <i class="fas fa-shopping-cart text-xl"></i>
+                            <span class="absolute -top-2 -right-2 bg-secondary text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">0</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Product Filtering Section -->
+    <section class="py-8 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
+                <h1 class="text-2xl font-bold text-gray-900 mb-4 md:mb-0">All Jerseys</h1>
+                <div class="flex flex-col sm:flex-row w-full md:w-auto space-y-4 sm:space-y-0 sm:space-x-4">
+                    <div class="relative">
+                        <select id="sort-by" class="appearance-none bg-white border border-gray-300 rounded-lg pl-3 pr-8 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary">
+                            <option>Sort by</option>
+                            <option value="price-asc">Price: Low to High</option>
+                            <option value="price-desc">Price: High to Low</option>
+                            <option value="popular">Most Popular</option>
+                            <option value="newest">Newest Arrivals</option>
+                        </select>
+                        <div class="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
+                            <i class="fas fa-chevron-down text-gray-400"></i>
+                        </div>
+                    </div>
+                    <button id="filter-toggle" class="flex items-center justify-center px-4 py-2 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50">
+                        <i class="fas fa-sliders-h mr-2"></i> Filters
+                    </button>
+                </div>
+            </div>
+
+            <!-- Filter Options (Initially hidden) -->
+            <div id="filter-options" class="hidden mb-8 p-4 bg-gray-50 rounded-lg">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Team Filter -->
+                    <div>
+                        <h3 class="text-sm font-medium text-gray-900 mb-2">Team</h3>
+                        <div class="space-y-2">
+                            <button class="filter-option px-3 py-1 rounded-full border border-gray-300 text-sm hover:bg-gray-100">Premier League</button>
+                            <button class="filter-option px-3 py-1 rounded-full border border-gray-300 text-sm hover:bg-gray-100">La Liga</button>
+                            <button class="filter-option px-3 py-1 rounded-full border border-gray-300 text-sm hover:bg-gray-100">Serie A</button>
+                            <button class="filter-option px-3 py-1 rounded-full border border-gray-300 text-sm hover:bg-gray-100">Bundesliga</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Size Filter -->
+                    <div>
+                        <h3 class="text-sm font-medium text-gray-900 mb-2">Size</h3>
+                        <div class="grid grid-cols-4 gap-2">
+                            <button class="filter-option px-3 py-1 rounded-full border border-gray-300 text-sm hover:bg-gray-100">S</button>
+                            <button class="filter-option px-3 py-1 rounded-full border border-gray-300 text-sm hover:bg-gray-100">M</button>
+                            <button class="filter-option px-3 py-1 rounded-full border border-gray-300 text-sm hover:bg-gray-100">L</button>
+                            <button class="filter-option px-3 py-1 rounded-full border border-gray-300 text-sm hover:bg-gray-100">XL</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Price Filter -->
+                    <div>
+                        <h3 class="text-sm font-medium text-gray-900 mb-2">Price Range</h3>
+                        <div class="flex items-center space-x-4">
+                            <input type="number" placeholder="Min" class="w-20 px-2 py-1 border border-gray-300 rounded text-sm">
+                            <span class="text-gray-500">to</span>
+                            <input type="number" placeholder="Max" class="w-20 px-2 py-1 border border-gray-300 rounded text-sm">
+                            <button class="px-3 py-1 bg-primary text-white rounded text-sm hover:bg-blue-700">Apply</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                <!-- Product Card 1 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300 relative">
+                    <div class="relative">
+                        <img src="https://cdn.pexels.com/photo/soccer-jersey-3495075/" alt="Manchester United Home Jersey" class="w-full h-80 object-cover">
+                        <div class="absolute top-2 right-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full">NEW</div>
+                        <button class="quick-view absolute bottom-2 left-1/2 transform -translate-x-1/2 bg-primary text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-blue-700">
+                            Quick View
+                        </button>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-lg font-bold text-gray-900 mb-1">Manchester United 23/24 Home</h3>
+                        <p class="text-gray-600 text-sm mb-2">Official Adidas Jersey</p>
+                        <div class="flex items-center mb-2">
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="text-gray-500 text-xs ml-1">(42)</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <span class="text-lg font-bold text-primary">$89.99</span>
+                                <span class="text-sm text-gray-500 line-through ml-2">$99.99</span>
+                            </div>
+                            <button class="bg-primary hover:bg-blue-700 text-white p-2 rounded-full transition duration-300">
+                                <i class="fas fa-shopping-cart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Card 2 -->
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-md transition duration-300 relative">
+                    <div class="relative">
+                        <img src="https://cdn.pexels.com/photo/soccer-jersey-3495076/" alt="Barcelona Home Jersey" class="w-full h-80 object-cover">
+                        <button class="quick-view absolute bottom-2 left-1/2 transform -translate-x-1/2 bg-primary text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-blue-700">
+                            Quick View
+                        </button>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-lg font-bold text-gray-900 mb-1">Barcelona 23/24 Home</h3>
+                        <p class="text-gray-600 text-sm mb-2">Official Nike Jersey</p>
+                        <div class="flex items-center mb-2">
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                            <span class="text-gray-500 text-xs ml-1">(36)</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-lg font-bold text-primary">$94.99</span>
+                            <button class="bg-primary hover:bg-blue-700 text-white p-2 rounded-full transition duration-300">
+                                <i class="fas fa-shopping-cart"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Additional product cards would go here -->
+            </div>
+
+            <!-- Pagination -->
+            <div class="mt-12 flex justify-center">
+                <nav class="flex items-center space-x-2">
+                    <button class="px-3 py-1 rounded border border-gray-300 text-gray-500 hover:bg-gray-50">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="px-3 py-1 rounded bg-primary text-white">1</button>
+                    <button class="px-3 py-1 rounded border border-gray-300 hover:bg-gray-50">2</button>
+                    <button class="px-3 py-1 rounded border border-gray-300 hover:bg-gray-50">3</button>
+                    <span class="px-2 text-gray-500">...</span>
+                    <button class="px-3 py-1 rounded border border-gray-300 hover:bg-gray-50">8</button>
+                    <button class="px-3 py-1 rounded border border-gray-300 text-gray-500 hover:bg-gray-50">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </nav>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (Same as index.html) -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Sports Arena</h3>
+                    <p class="text-gray-400">5-7, Beresford Road<br>Strathfield, NSW 2135<br>Australia</p>
+                </div>
+                <div>
+                    <h4 class="text-sm font-semibold uppercase tracking-wider mb-4">Shop</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">New Arrivals</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Jerseys</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Shorts</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Accessories</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-sm font-semibold uppercase tracking-wider mb-4">Help</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Contact Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Shipping</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Returns</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Size Guide</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-sm font-semibold uppercase tracking-wider mb-4">Connect</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-tiktok text-xl"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-sm text-gray-400 text-center">
+                    <p>© 2023 Sports Arena. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Filter toggle functionality
+        const filterToggle = document.getElementById('filter-toggle');
+        const filterOptions = document.getElementById('filter-options');
+        
+        filterToggle.addEventListener('click', () => {
+            filterOptions.classList.toggle('hidden');
+            const icon = filterToggle.querySelector('i');
+            if (filterOptions.classList.contains('hidden')) {
+                icon.classList.replace('fa-times', 'fa-sliders-h');
+            } else {
+                icon.classList.replace('fa-sliders-h', 'fa-times');
+            }
+        });
+
+        // Filter option selection
+        const filterButtons = document.querySelectorAll('.filter-option');
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                button.classList.toggle('active');
+                button.classList.toggle('border-primary');
+                button.classList.toggle('text-primary');
+            });
+        });
+
+        // Sort functionality
+        const sortSelect = document.getElementById('sort-by');
+        sortSelect.addEventListener('change', (e) => {
+            console.log('Sorting by:', e.target.value);
+            // Actual sorting logic would go here
+        });
+
+        // Quick view button hover effect
+        const productCards = document.querySelectorAll('.product-card');
+        productCards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                const quickView = card.querySelector('.quick-view');
+                quickView.style.opacity = '1';
+                quickView.style.transform = 'translateY(0)';
+            });
+            card.addEventListener('mouseleave', () => {
+                const quickView = card.querySelector('.quick-view');
+                quickView.style.opacity = '0';
+                quickView.style.transform = 'translateY(10px)';
+            });
+        });
+    </script>
+</body>
+</html>
