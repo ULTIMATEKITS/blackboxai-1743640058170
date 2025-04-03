@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | EliteKits</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .auth-tab.active {
+            border-color: #0077B5;
+            color: #0077B5;
+        }
+        .password-toggle:hover {
+            color: #0077B5;
+        }
+        .social-btn:hover {
+            transform: translateY(-2px);
+        }
+        .divider::before, .divider::after {
+            content: "";
+            flex: 1;
+            border-bottom: 1px solid #e5e7eb;
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50">
+    <!-- Navigation (Same as index.html) -->
+    <nav class="bg-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex-shrink-0 flex items-center">
+                        <img class="h-8 w-auto" src="https://cdn.pexels.com/photo/soccer-ball-1265875.jpeg" alt="Logo">
+                        <span class="ml-2 text-xl font-bold text-primary">EliteKits</span>
+                    </a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-gray-900 hover:text-primary px-3 py-2 text-sm font-medium">Home</a>
+                    <a href="products.html" class="text-primary px-3 py-2 text-sm font-medium">Shop</a>
+                    <a href="#" class="text-gray-900 hover:text-primary px-3 py-2 text-sm font-medium">Teams</a>
+                    <a href="#" class="text-gray-900 hover:text-primary px-3 py-2 text-sm font-medium">New Arrivals</a>
+                    <div class="relative">
+                        <button class="text-gray-900 hover:text-primary">
+                            <i class="fas fa-shopping-cart text-xl"></i>
+                            <span class="absolute -top-2 -right-2 bg-secondary text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">0</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Auth Section -->
+    <section class="py-16">
+        <div class="max-w-md mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white shadow rounded-lg overflow-hidden">
+                <!-- Auth Tabs -->
+                <div class="flex border-b">
+                    <button id="login-tab-btn" class="auth-tab flex-1 py-4 px-1 text-center border-b-2 font-medium text-sm border-primary text-primary">
+                        Sign In
+                    </button>
+                    <button id="register-tab-btn" class="auth-tab flex-1 py-4 px-1 text-center border-b-2 font-medium text-sm border-transparent text-gray-500 hover:text-gray-700">
+                        Create Account
+                    </button>
+                </div>
+                
+                <!-- Login Form -->
+                <div id="login-form" class="p-6">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-6">Welcome Back</h2>
+                    
+                    <!-- Social Login -->
+                    <div class="space-y-3 mb-6">
+                        <button class="social-btn w-full flex items-center justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 transition duration-300">
+                            <i class="fab fa-google text-red-500 mr-2"></i> Continue with Google
+                        </button>
+                        <button class="social-btn w-full flex items-center justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 transition duration-300">
+                            <i class="fab fa-facebook-f text-blue-600 mr-2"></i> Continue with Facebook
+                        </button>
+                    </div>
+                    
+                    <!-- Divider -->
+                    <div class="flex items-center my-6 divider">
+                        <span class="px-2 text-sm text-gray-500">or sign in with email</span>
+                    </div>
+                    
+                    <!-- Email Login -->
+                    <form>
+                        <div class="mb-4">
+                            <label for="login-email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+                            <input type="email" id="login-email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary" required>
+                        </div>
+                        <div class="mb-4 relative">
+                            <label for="login-password" class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+                            <input type="password" id="login-password" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary pr-10" required>
+                            <button type="button" class="password-toggle absolute right-3 top-9 text-gray-400">
+                                <i class="far fa-eye"></i>
+                            </button>
+                        </div>
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="flex items-center">
+                                <input id="remember-me" type="checkbox" class="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded">
+                                <label for="remember-me" class="ml-2 block text-sm text-gray-700">Remember me</label>
+                            </div>
+                            <a href="#" id="forgot-password" class="text-sm text-primary hover:text-blue-700">Forgot password?</a>
+                        </div>
+                        <button type="submit" class="w-full bg-primary hover:bg-blue-700 text-white py-2 px-4 rounded-lg font-medium transition duration-300">
+                            Sign In
+                        </button>
+                    </form>
+                </div>
+                
+                <!-- Register Form (Hidden by default) -->
+                <div id="register-form" class="hidden p-6">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-6">Create Your Account</h2>
+                    
+                    <!-- Social Register -->
+                    <div class="space-y-3 mb-6">
+                        <button class="social-btn w-full flex items-center justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 transition duration-300">
+                            <i class="fab fa-google text-red-500 mr-2"></i> Continue with Google
+                        </button>
+                        <button class="social-btn w-full flex items-center justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 transition duration-300">
+                            <i class="fab fa-facebook-f text-blue-600 mr-2"></i> Continue with Facebook
+                        </button>
+                    </div>
+                    
+                    <!-- Divider -->
+                    <div class="flex items-center my-6 divider">
+                        <span class="px-2 text-sm text-gray-500">or sign up with email</span>
+                    </div>
+                    
+                    <!-- Email Register -->
+                    <form>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <label for="first-name" class="block text-sm font-medium text-gray-700 mb-1">First Name</label>
+                                <input type="text" id="first-name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary" required>
+                            </div>
+                            <div>
+                                <label for="last-name" class="block text-sm font-medium text-gray-700 mb-1">Last Name</label>
+                                <input type="text" id="last-name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary" required>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <label for="register-email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+                            <input type="email" id="register-email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary" required>
+                        </div>
+                        <div class="mb-4 relative">
+                            <label for="register-password" class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+                            <input type="password" id="register-password" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary pr-10" required>
+                            <button type="button" class="password-toggle absolute right-3 top-9 text-gray-400">
+                                <i class="far fa-eye"></i>
+                            </button>
+                            <p class="mt-1 text-xs text-gray-500">Must be at least 8 characters</p>
+                        </div>
+                        <div class="mb-6 relative">
+                            <label for="confirm-password" class="block text-sm font-medium text-gray-700 mb-1">Confirm Password</label>
+                            <input type="password" id="confirm-password" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary pr-10" required>
+                            <button type="button" class="password-toggle absolute right-3 top-9 text-gray-400">
+                                <i class="far fa-eye"></i>
+                            </button>
+                        </div>
+                        <div class="flex items-center mb-6">
+                            <input id="accept-terms" type="checkbox" class="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded" required>
+                            <label for="accept-terms" class="ml-2 block text-sm text-gray-700">
+                                I agree to the <a href="#" class="text-primary hover:text-blue-700">Terms of Service</a> and <a href="#" class="text-primary hover:text-blue-700">Privacy Policy</a>
+                            </label>
+                        </div>
+                        <button type="submit" class="w-full bg-primary hover:bg-blue-700 text-white py-2 px-4 rounded-lg font-medium transition duration-300">
+                            Create Account
+                        </button>
+                    </form>
+                </div>
+                
+                <!-- Forgot Password Form (Hidden by default) -->
+                <div id="forgot-password-form" class="hidden p-6">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-6">Reset Your Password</h2>
+                    <p class="text-gray-600 mb-6">Enter your email address and we'll send you a link to reset your password.</p>
+                    
+                    <form>
+                        <div class="mb-4">
+                            <label for="reset-email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+                            <input type="email" id="reset-email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-primary focus:border-primary" required>
+                        </div>
+                        <button type="submit" class="w-full bg-primary hover:bg-blue-700 text-white py-2 px-4 rounded-lg font-medium transition duration-300 mb-4">
+                            Send Reset Link
+                        </button>
+                        <button type="button" id="back-to-login" class="w-full text-primary hover:text-blue-700 font-medium">
+                            Back to Sign In
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Auth Footer -->
+            <div class="mt-6 text-center text-sm text-gray-600">
+                <p>By continuing, you agree to our <a href="#" class="text-primary hover:text-blue-700">Terms of Service</a> and <a href="#" class="text-primary hover:text-blue-700">Privacy Policy</a>.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (Same as index.html) -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-lg font-bold mb-4">EliteKits</h3>
+                    <p class="text-gray-400">The ultimate destination for authentic football jerseys and merchandise.</p>
+                </div>
+                <div>
+                    <h4 class="text-sm font-semibold uppercase tracking-wider mb-4">Shop</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">New Arrivals</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Jerseys</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Shorts</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Accessories</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-sm font-semibold uppercase tracking-wider mb-4">Help</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Contact Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Shipping</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Returns</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Size Guide</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-sm font-semibold uppercase tracking-wider mb-4">Connect</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-tiktok text-xl"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-sm text-gray-400 text-center">
+                <p>© 2023 EliteKits. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Toggle between login and register forms
+        const loginTabBtn = document.getElementById('login-tab-btn');
+        const registerTabBtn = document.getElementById('register-tab-btn');
+        const loginForm = document.getElementById('login-form');
+        const registerForm = document.getElementById('register-form');
+        
+        loginTabBtn.addEventListener('click', () => {
+            loginTabBtn.classList.add('border-primary', 'text-primary');
+            loginTabBtn.classList.remove('border-transparent', 'text-gray-500');
+            registerTabBtn.classList.remove('border-primary', 'text-primary');
+            registerTabBtn.classList.add('border-transparent', 'text-gray-500');
+            loginForm.classList.remove('hidden');
+            registerForm.classList.add('hidden');
+        });
+        
+        registerTabBtn.addEventListener('click', () => {
+            registerTabBtn.classList.add('border-primary', 'text-primary');
+            registerTabBtn.classList.remove('border-transparent', 'text-gray-500');
+            loginTabBtn.classList.remove('border-primary', 'text-primary');
+            loginTabBtn.classList.add('border-transparent', 'text-gray-500');
+            registerForm.classList.remove('hidden');
+            loginForm.classList.add('hidden');
+        });
+        
+        // Forgot password functionality
+        const forgotPasswordLink = document.getElementById('forgot-password');
+        const forgotPasswordForm = document.getElementById('forgot-password-form');
+        const backToLoginBtn = document.getElementById('back-to-login');
+        
+        forgotPasswordLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            loginForm.classList.add('hidden');
+            forgotPasswordForm.classList.remove('hidden');
+        });
+        
+        backToLoginBtn.addEventListener('click', () => {
+            forgotPasswordForm.classList.add('hidden');
+            loginForm.classList.remove('hidden');
+        });
+        
+        // Password toggle functionality
+        const passwordToggles = document.querySelectorAll('.password-toggle');
+        passwordToggles.forEach(toggle => {
+            toggle.addEventListener('click', (e) => {
+                const input = e.currentTarget.previousElementSibling;
+                const icon = e.currentTarget.querySelector('i');
+                
+                if (input.type === 'password') {
+                    input.type = 'text';
+                    icon.classList.remove('fa-eye');
+                    icon.classList.add('fa-eye-slash');
+                } else {
+                    input.type = 'password';
+                    icon.classList.remove('fa-eye-slash');
+                    icon.classList.add('fa-eye');
+                }
+            });
+        });
+        
+        // Form submission
+        document.querySelectorAll('form').forEach(form => {
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                // In a real app, this would validate and submit to a backend
+                if (form.parentElement.id === 'login-form') {
+                    alert('Login successful! Redirecting...');
+                    window.location.href = 'index.html';
+                } else if (form.parentElement.id === 'register-form') {
+                    alert('Account created successfully! Please check your email to verify your account.');
+                    loginTabBtn.click();
+                } else if (form.parentElement.id === 'forgot-password-form') {
+                    alert('Password reset link sent to your email!');
+                    forgotPasswordForm.classList.add('hidden');
+                    loginForm.classList.remove('hidden');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
